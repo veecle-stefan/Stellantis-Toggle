@@ -1,10 +1,11 @@
 ## PSA Toggle Arduino Code
 
 This Arduino code talks to the widespread gear selector ("E-Toggle") PSA/Stellantis cars (Peugeot, Opel, Citroen, Jeep)
-![eToogle Lever](etoggle.gif)
+
+![eToogle Lever](docs/etoggle.gif)
 
 Part Number: `98440965ZD`
-![eToogle Lever](part_number.jpg)
+![eToogle Lever](docs/part_number.jpg)
 
 ### CAN ID 0x219
 Received by eToggle.
@@ -60,3 +61,9 @@ byte checksumm_0E6(const byte *frame, uint8_t len, uint8_t iter, uint8_t seed)
   return checksum;
 }
 ```
+
+
+## Wiring
+The eToggle has a 6 Pin keyed connector with the following pin out. You need to connect 12V to the power lines and CAN High/Low with the Arduino CAN bus shield. 
+
+![](/docs/wiring.png)

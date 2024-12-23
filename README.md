@@ -1,6 +1,10 @@
 ## PSA Toggle Arduino Code
 
-This Arduino code talks to the widespread E-Toggle lever in PSA/Stellantis cars
+This Arduino code talks to the widespread gear selector ("E-Toggle") PSA/Stellantis cars (Peugeot, Opel, Citroen, Jeep)
+![eToogle Lever](etoggle.gif)
+
+Part Number: `98440965ZD`
+![eToogle Lever](part_number.jpg)
 
 ### CAN ID 0x219
 Received by eToggle.

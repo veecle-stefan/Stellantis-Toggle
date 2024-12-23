@@ -64,20 +64,25 @@ void sendPacket()
   timeIsUp = true;
 }
 
-byte checksumm_0E6(const byte *frame, uint8_t len, uint8_t iter, uint8_t seed)
+byte checksumm_0E6(const uint8_t *frame, uint8_t length, uint8_t counter, uint8_t seed)
 {
 
-  byte cursumm = 0;
-  byte checksum = 0;
-  for (byte i = 0; i < len; i++)
+  uint8_t sum = 0;
+
+  // Sum up the high nibble and low nibble of each byte.
+  for (uint8_t i = 0; i < length; i++)
   {
-    cursumm += (frame[i] >> 4) + (frame[i] & 0x0F);
+    sum += (frame[i] >> 4) + (frame[i] & 0x0F);
   }
-  cursumm += iter;
-  cursumm = ((cursumm ^ 0xFF) - seed) & 0x0F;
-  checksum = (cursumm << 4) | iter ;
-  return checksum;
+
+  // Add the counter, invert bits, subtract the seed, and keep only the low nibble.
+  sum += counter;
+  sum = ((sum ^ 0xFF) - seed) & 0x0F;
+
+  // Combine the result nibble (sum) and the counter nibble into one byte.
+  return (uint8_t)((sum << 4) | counter);
 }
+
 
 
 void setup()
